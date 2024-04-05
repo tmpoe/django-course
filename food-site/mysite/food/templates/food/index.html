@@ -7,6 +7,14 @@
 </head>
 <body>
     <h1>Hello there!</h1>
-    <div>{{item_list}}</div>
+    <div>
+        <ul>
+
+        {% for item in item_list %}
+                <li>{{ item.name }} -- {{item.price}}</li>
+        {% endfor %}
+        </ul>
+
+    </div>
 </body>
 </html>
