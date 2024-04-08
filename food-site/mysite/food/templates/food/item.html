@@ -6,15 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello there!</h1>
+    <h1>{{ item.name }}</h1>
     <div>
-        <ul>
-
-        {% for item in item_list %}
-                <li><a href="{% url 'food:item' item.id %}">{{ item.name }}</a> -- {{item.price}}</li>
-        {% endfor %}
-        </ul>
-
+        <p>Price: {{ item.price }}</p>
+        <p>{{ item.description }}</p>
     </div>
 </body>
 </html>
