@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from .models import Item
 
+
 # Create your views here.
 def index(request):
     item_list = Item.objects.all()
