@@ -2,11 +2,13 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     {% block body %}
 
@@ -19,9 +21,11 @@
                 <h3>{{ item.name }}</h3>
                 <h5>{{ item.description }}</h5>
                 <h6>${{ item.price }}</h6>
+                <a href="{% url 'food:delete_item' item.id %}" class="btn btn-primary">Delete</a>
             </div>
-    </div>
+        </div>
 
-    {% endblock %}
+        {% endblock %}
 </body>
+
 </html>
