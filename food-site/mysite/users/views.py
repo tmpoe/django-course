@@ -19,7 +19,12 @@ def register(request):
         print(form)
     return render(request, 'users/register.html', {'form': form})
 
-@login_required(login_url='login')
+@login_required
 def user_logout(request):
     logout(request)
     return render(request, 'users/logout.html', {})
+
+
+@login_required
+def profile(request):
+    return render(request, 'users/profile.html', {})
