@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 from .models import Item
 from .forms import ItemForm
 
@@ -24,14 +24,15 @@ def item(request, item_id: int):
     return render(request, 'food/item.html', {'item': item})
 
 
-def add_item(request):
-    form = ItemForm(request.POST or None)
+class AddItemView(CreateView):
+    model = Item
+    template_name = 'food/item_form.html'
+    fields = ['name', 'description', 'price', 'image']
 
-    if form.is_valid():
-        form.save()
-        return redirect('food:index')
-    
-    return render(request, 'food/item_form.html', {'form': form})
+    def form_valid(self, form):
+        item_form_instance: Item = form.instance
+        item_form_instance.user_name = self.request.user
+        return super().form_valid(form)
 
 
 def edit_item(request, item_id: int):

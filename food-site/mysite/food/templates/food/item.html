@@ -21,6 +21,7 @@
                 <h3>{{ item.name }}</h3>
                 <h5>{{ item.description }}</h5>
                 <h6>${{ item.price }}</h6>
+                <h6>Added: {{ item.user_name }}</h6>
                 <a href="{% url 'food:delete_item' item.id %}" class="btn btn-primary">Delete</a>
             </div>
         </div>
