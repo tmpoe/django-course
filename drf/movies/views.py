@@ -13,3 +13,9 @@ class MovieView(viewsets.ModelViewSet):
 class ActionViewSet(viewsets.ModelViewSet):
     queryset = Moviedata.objects.filter(category='Action')
     serializer_class = MovieSerializer
+
+
+def movie_list(request):
+    movies = Moviedata.objects.all()
+    print(movies)
+    return render(request, 'movies/movie_list.html', {'movies': movies})
